@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linux evdev helper demo</title>
+    <link rel="stylesheet" href="./overlay.css">
+  </head>
+  <body>
+    <main class="overlay">
+      <header class="header">
+        <img class="app-icon" src="../assets/icon.png" alt="">
+        <div>
+          <div class="eyebrow">Linux evdev helper</div>
+          <h1>Overlay Active</h1>
+        </div>
+      </header>
+      <p>This window is toggled by the registered global evdev hotkey.</p>
+      <div class="row">
+        <span class="label">Hotkey</span>
+        <span class="value" id="hotkey">Shift+N</span>
+      </div>
+      <div class="row">
+        <span class="label">Helper</span>
+        <span class="value" id="status">Starting helper...</span>
+      </div>
+    </main>
+    <script type="module" src="./overlay.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "name": "linux-evdev-wayland-helper",
+  "version": "0.1.0",
+  "description": "Small Linux evdev hotkey helper for Electron and Node hosts on Wayland.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "native",
+    "scripts",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "linux-evdev-helper-test": "./scripts/linux-evdev-helper-test.mjs"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:native": "make -C native/linux-evdev-helper",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "linux",
+    "evdev",
+    "wayland",
+    "hotkey",
+    "electron"
+  ],
+  "devDependencies": {
+    "typescript": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

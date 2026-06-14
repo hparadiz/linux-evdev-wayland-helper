@@ -1,0 +1,4 @@
+node_modules
+demo/node_modules
+native/linux-evdev-helper/linux-evdev-helper
+native/linux-evdev-helper/linux-evdev-helper-debug

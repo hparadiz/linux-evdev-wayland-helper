@@ -1,0 +1,6 @@
+{
+  "hotkeys": [
+    { "id": "shift-n", "accelerator": "Shift+N" },
+    { "id": "ctrl-d", "accelerator": "Ctrl+D" }
+  ]
+}
