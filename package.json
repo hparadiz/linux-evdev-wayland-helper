@@ -27,6 +27,7 @@
     "build:native": "make -C native/linux-evdev-helper",
     "test": "npm run build && node --test test/*.test.mjs",
     "test:coverage": "npm run build && node --test --experimental-test-coverage --test-coverage-include='dist/**/*.js' --test-coverage-lines=99 --test-coverage-branches=92 --test-coverage-functions=97 test/*.test.mjs",
+    "coverage:badge": "node scripts/write-coverage-badge.mjs coverage.txt .github/badges/coverage.svg",
     "prepack": "npm run build"
   },
   "keywords": [

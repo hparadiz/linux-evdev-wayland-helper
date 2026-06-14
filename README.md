@@ -1,5 +1,12 @@
 # linux-evdev-wayland-helper
 
+[![CI](https://github.com/hparadiz/linux-evdev-wayland-helper/actions/workflows/ci.yml/badge.svg)](https://github.com/hparadiz/linux-evdev-wayland-helper/actions/workflows/ci.yml)
+![Coverage](.github/badges/coverage.svg)
+[![npm version](https://img.shields.io/npm/v/linux-evdev-wayland-helper.svg)](https://www.npmjs.com/package/linux-evdev-wayland-helper)
+[![license](https://img.shields.io/npm/l/linux-evdev-wayland-helper.svg)](LICENSE)
+![node](https://img.shields.io/node/v/linux-evdev-wayland-helper.svg)
+![types](https://img.shields.io/npm/types/linux-evdev-wayland-helper.svg)
+
 Standalone Linux evdev global hotkey helper for Node and Electron hosts on Wayland.
 
 This package exists because Wayland global shortcuts are compositor and portal dependent. `Electron.globalShortcut` and libraries that rely on desktop APIs can fail while a game or another exclusive input client is focused. This backend uses Linux evdev instead: a small native helper reads configured keyboard event devices and only emits events for shortcuts that the host app registered.
