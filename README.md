@@ -16,6 +16,13 @@ npm run build:native
 
 The TypeScript package builds on non-Linux platforms. The native helper is Linux-only and is built only when you run `npm run build:native`.
 
+Run unit tests and coverage:
+
+```sh
+npm test
+npm run test:coverage
+```
+
 ## API
 
 ```ts
@@ -175,6 +182,8 @@ cd demo
 npm install
 npm start
 ```
+
+The demo behaves like a small host app settings panel: it starts the helper, lets you choose between five premade overlay hotkey presets, can clear all hotkeys, and can stop/restart the helper while showing event output. The presets exercise `setHotkeys()`, `updateHotkeys()`, `restart()`, `clearHotkeys()`, `stop()`, and `start()` without exposing method-shaped buttons in the UI.
 
 ## Helper Protocol
 

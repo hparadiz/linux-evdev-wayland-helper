@@ -18,6 +18,17 @@ Default behavior:
 - Helper elevation: `pkexec`
 - Device selection: all current `/dev/input/event*`
 - Menu: `Show Overlay` / `Hide Overlay`, and `Exit`
+- Settings panel: choose one of five premade hotkey presets, disable hotkeys, restart the helper, stop/start the helper, and inspect events
+
+The presets are presented like normal app settings, but they exercise different API paths internally:
+
+- `Shift+N`: live `setHotkeys()`
+- `Ctrl+D`: `updateHotkeys()`
+- `Ctrl+Alt+D`: `restart()`
+- `F9`: `clearHotkeys()` followed by `setHotkeys()`
+- `Shift+Space`: `stop()` followed by `start()`
+
+The event log shows helper events and preset changes.
 
 Environment overrides:
 

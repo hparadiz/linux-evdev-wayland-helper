@@ -20,6 +20,7 @@ test("parses supported Electron-style accelerators", () => {
 });
 
 test("rejects unsupported keys and malformed accelerators", () => {
+  assert.throws(() => parseAccelerator(""), /empty/);
   assert.throws(() => parseAccelerator("Ctrl+Mouse1"), /unsupported/);
   assert.throws(() => parseAccelerator("Ctrl+"), /missing/);
   assert.throws(() => parseAccelerator("A+B"), /multiple/);

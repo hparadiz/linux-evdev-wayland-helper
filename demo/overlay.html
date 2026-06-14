@@ -12,18 +12,50 @@
         <img class="app-icon" src="../assets/icon.png" alt="">
         <div>
           <div class="eyebrow">Linux evdev helper</div>
-          <h1>Overlay Active</h1>
+          <h1>Overlay Settings</h1>
         </div>
       </header>
-      <p>This window is toggled by the registered global evdev hotkey.</p>
-      <div class="row">
-        <span class="label">Hotkey</span>
-        <span class="value" id="hotkey">Shift+N</span>
-      </div>
-      <div class="row">
-        <span class="label">Helper</span>
-        <span class="value" id="status">Starting helper...</span>
-      </div>
+
+      <section class="status-grid">
+        <div class="row">
+          <span class="label">Default Hotkey</span>
+          <span class="value" id="hotkey">Shift+N</span>
+        </div>
+        <div class="row">
+          <span class="label">Helper</span>
+          <span class="value" id="status">Starting helper...</span>
+        </div>
+        <div class="row">
+          <span class="label">Running</span>
+          <span class="status-pill" id="helper-indicator">
+            <span class="status-dot"></span>
+            <span id="running">No</span>
+          </span>
+        </div>
+        <div class="row">
+          <span class="label">Active Binding</span>
+          <span class="value" id="active-hotkey">toggle-overlay:Shift+N</span>
+        </div>
+      </section>
+
+      <section class="preset-section">
+        <div class="section-title">Hotkey Presets</div>
+        <div id="preset-grid" class="preset-grid"></div>
+      </section>
+
+      <section class="button-grid" aria-label="Helper controls">
+        <button data-command="start">Start Helper</button>
+        <button data-command="stop">Stop Helper</button>
+        <button data-command="restart">Restart Helper</button>
+        <button data-command="reset-hotkey">Use Default</button>
+        <button data-command="clear-hotkeys">Disable Hotkeys</button>
+        <button data-command="toggle-overlay">Toggle Overlay</button>
+      </section>
+
+      <section class="log-section">
+        <div class="log-title">Event Log</div>
+        <ol id="event-log" class="event-log"></ol>
+      </section>
     </main>
     <script type="module" src="./overlay.js"></script>
   </body>

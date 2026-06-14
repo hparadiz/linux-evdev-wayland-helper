@@ -147,9 +147,6 @@ export class LinuxEvdevHelper extends EventEmitter {
       throw new Error("linux evdev helper has not been started");
     }
     const [parsedHotkey] = parseHotkeys([hotkey]);
-    if (!parsedHotkey) {
-      throw new Error("hotkey is required");
-    }
     this.sendCommand({ type: "bind", hotkey: parsedHotkey });
     const nextHotkeys = this.options.hotkeys.filter((existing) => existing.id !== hotkey.id);
     nextHotkeys.push(hotkey);
@@ -193,16 +190,38 @@ export class LinuxEvdevHelper extends EventEmitter {
 
     this.stopping = true;
     await new Promise<void>((resolve) => {
+      let resolved = false;
+      const finish = () => {
+        if (!resolved) {
+          resolved = true;
+          clearTimeout(timeout);
+          resolve();
+        }
+      };
+      const signalChild = (signal: string): boolean => {
+        try {
+          return child.kill(signal);
+        } catch (error) {
+          this.emit("event", {
+            type: "error",
+            code: "SIGNAL_FAILED",
+            message: error instanceof Error ? error.message : String(error)
+          });
+          return false;
+        }
+      };
       const timeout = setTimeout(() => {
         if (this.child === child) {
-          child.kill("SIGKILL");
+          signalChild("SIGKILL");
         }
+        finish();
       }, 2000);
       child.once("exit", () => {
-        clearTimeout(timeout);
-        resolve();
+        finish();
       });
-      child.kill("SIGTERM");
+      if (!signalChild("SIGTERM")) {
+        finish();
+      }
     });
     this.child = undefined;
     this.stopping = false;
