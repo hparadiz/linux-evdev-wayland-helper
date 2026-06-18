@@ -21,7 +21,7 @@ test("parses supported Electron-style accelerators", () => {
 
 test("rejects unsupported keys and malformed accelerators", () => {
   assert.throws(() => parseAccelerator(""), /empty/);
-  assert.throws(() => parseAccelerator("Ctrl+Mouse1"), /unsupported/);
+  assert.throws(() => parseAccelerator("Ctrl+MouseButton99"), /unsupported/);
   assert.throws(() => parseAccelerator("Ctrl+"), /missing/);
   assert.throws(() => parseAccelerator("A+B"), /multiple/);
 });
@@ -31,4 +31,19 @@ test("rejects bare basic alphabet keys", () => {
   assert.throws(() => parseAccelerator("n"), /modifier/);
   assert.deepEqual(parseAccelerator("Shift+N"), { keyCode: "KEY_N", modifiers: ["shift"] });
   assert.deepEqual(parseAccelerator("Ctrl+D"), { keyCode: "KEY_D", modifiers: ["ctrl"] });
+});
+
+test("parses mouse button accelerators", () => {
+  assert.deepEqual(parseAccelerator("MouseLeft"), { keyCode: "BTN_LEFT", modifiers: [] });
+  assert.deepEqual(parseAccelerator("Mouse1"), { keyCode: "BTN_LEFT", modifiers: [] });
+  assert.deepEqual(parseAccelerator("MouseRight"), { keyCode: "BTN_RIGHT", modifiers: [] });
+  assert.deepEqual(parseAccelerator("Mouse2"), { keyCode: "BTN_RIGHT", modifiers: [] });
+  assert.deepEqual(parseAccelerator("MouseMiddle"), { keyCode: "BTN_MIDDLE", modifiers: [] });
+  assert.deepEqual(parseAccelerator("Mouse3"), { keyCode: "BTN_MIDDLE", modifiers: [] });
+  assert.deepEqual(parseAccelerator("Mouse4"), { keyCode: "BTN_SIDE", modifiers: [] });
+  assert.deepEqual(parseAccelerator("MouseBack"), { keyCode: "BTN_SIDE", modifiers: [] });
+  assert.deepEqual(parseAccelerator("Mouse5"), { keyCode: "BTN_EXTRA", modifiers: [] });
+  assert.deepEqual(parseAccelerator("MouseForward"), { keyCode: "BTN_EXTRA", modifiers: [] });
+  assert.deepEqual(parseAccelerator("Ctrl+MouseLeft"), { keyCode: "BTN_LEFT", modifiers: ["ctrl"] });
+  assert.deepEqual(parseAccelerator("Ctrl+Alt+MouseRight"), { keyCode: "BTN_RIGHT", modifiers: ["alt", "ctrl"] });
 });

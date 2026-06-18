@@ -62,9 +62,11 @@ await helper.stop();
 
 `bindHotkey()` means “register this sequence now”. Binding an existing id replaces that id. `unbindHotkey()` forgets one registered id, `clearHotkeys()` forgets all registered shortcuts, and `setHotkeys()` replaces the current set in the running helper. `updateHotkeys()` is kept as an alias for `setHotkeys()`. These hotkey-only changes do not restart the helper.
 
-Supported accelerator keys in this initial package include the keys needed by the reference integration: `Ctrl+D`, `Ctrl+Alt+D`, `Shift+Space`, `Shift+N`, `Shift+Period`, `F5`, and `F9`. The parser also accepts function keys `F1` through `F12`, navigation keys such as `Tab`, `Home`, and `End`, and common numpad keys.
+Supported accelerator keys include function keys `F1` through `F12`, navigation keys such as `Tab`, `Home`, `End`, `PageUp`, `PageDown`, `Insert`, `Delete`, `Escape`, `Enter`, `Backspace`, arrow keys, numpad keys, and mouse buttons.
 
-Bare basic alphabet keys are intentionally rejected. For example, `N` is invalid, while `Shift+N`, `Ctrl+N`, and `Alt+N` are valid. Standalone function and special keys are allowed because they do not turn the helper into a stream of ordinary text input.
+Mouse button names: `MouseLeft` / `Mouse1`, `MouseRight` / `Mouse2`, `MouseMiddle` / `Mouse3`, `Mouse4` / `MouseBack` (side/back button), `Mouse5` / `MouseForward` (extra/forward button). Mouse buttons may be used bare or combined with keyboard modifiers, for example `Ctrl+MouseLeft`.
+
+Bare basic alphabet keys are intentionally rejected. For example, `N` is invalid, while `Shift+N`, `Ctrl+N`, and `Alt+N` are valid. Standalone function, special, and mouse button keys are allowed because they do not turn the helper into a stream of ordinary text input.
 
 ## Comparison With Other Linux Input Approaches
 

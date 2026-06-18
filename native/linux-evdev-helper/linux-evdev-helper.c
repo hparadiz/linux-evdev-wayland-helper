@@ -331,6 +331,21 @@ static int key_code_from_name(const char *name) {
     if (strcmp(name, "KEY_KPDOT") == 0) {
         return KEY_KPDOT;
     }
+    if (strcmp(name, "BTN_LEFT") == 0) {
+        return BTN_LEFT;
+    }
+    if (strcmp(name, "BTN_RIGHT") == 0) {
+        return BTN_RIGHT;
+    }
+    if (strcmp(name, "BTN_MIDDLE") == 0) {
+        return BTN_MIDDLE;
+    }
+    if (strcmp(name, "BTN_SIDE") == 0) {
+        return BTN_SIDE;
+    }
+    if (strcmp(name, "BTN_EXTRA") == 0) {
+        return BTN_EXTRA;
+    }
     return -1;
 }
 

@@ -40,7 +40,17 @@ const keyAliases = new Map([
     ["numdiv", "KEY_KPSLASH"],
     ["numdivide", "KEY_KPSLASH"],
     ["numenter", "KEY_KPENTER"],
-    ["numdecimal", "KEY_KPDOT"]
+    ["numdecimal", "KEY_KPDOT"],
+    ["mouseleft", "BTN_LEFT"],
+    ["mouse1", "BTN_LEFT"],
+    ["mouseright", "BTN_RIGHT"],
+    ["mouse2", "BTN_RIGHT"],
+    ["mousemiddle", "BTN_MIDDLE"],
+    ["mouse3", "BTN_MIDDLE"],
+    ["mouse4", "BTN_SIDE"],
+    ["mouseback", "BTN_SIDE"],
+    ["mouse5", "BTN_EXTRA"],
+    ["mouseforward", "BTN_EXTRA"]
 ]);
 for (let code = 65; code <= 90; code += 1) {
     const key = String.fromCharCode(code);
